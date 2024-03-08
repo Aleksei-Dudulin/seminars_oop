@@ -1,4 +1,5 @@
 import Domain.Bottle;
+import Domain.HotDrink;
 import Domain.Product;
 import Service.CoinDispenser;
 import Service.Display;
@@ -17,6 +18,8 @@ public class App {
         Product item3 = new Product(120.5, 3, "lays");
         Bottle item4 = new Bottle(123.5, 4, "cola", 0.5f);
         Bottle item5 = new Bottle(13.5, 5, "fanta", 0.6f);
+        HotDrink item6 = new HotDrink(45.5, 6, "coffee", 60);
+        HotDrink item7 = new HotDrink(45.5, 7, "tea", 55);
 
         List<Product> items = new ArrayList<>();
         items.add(item1);
@@ -24,6 +27,8 @@ public class App {
         items.add(item3);
         items.add(item4);
         items.add(item5);
+        items.add(item6);
+        items.add(item7);
 
         Holder hold = new Holder();
         Display disp = new Display();
