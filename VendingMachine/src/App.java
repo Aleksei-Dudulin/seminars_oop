@@ -1,10 +1,7 @@
 import Domain.Bottle;
 import Domain.HotDrink;
 import Domain.Product;
-import Service.CoinDispenser;
-import Service.Display;
-import Service.Holder;
-import Service.VendingMachine;
+import Service.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +35,9 @@ public class App {
         for (Product prod : vendMachine.getProductList()){
             System.out.println(prod);
         }
+
+        MainFrame myFrame = new MainFrame();
+        myFrame.initialize();
 
     }
 }
