@@ -1,6 +1,8 @@
 package Classes;
 
-public class SpecialClient extends Actor{
+import Interfaces.iActorBehaviour;
+
+public class SpecialClient extends Actor implements iActorBehaviour {
     private int idVIP;
 
     public SpecialClient(String name, int idVIP) {
@@ -18,23 +20,23 @@ public class SpecialClient extends Actor{
         super.name = name;
     }
 
-    boolean isMakeOrder() {
+    public boolean isMakeOrder() {
         return super.isMakeOrder;
     }
 
-    boolean isTakeOrder() {
+    public boolean isTakeOrder() {
         return super.isTakeOrder;
     }
 
-    void setMakeOrder(boolean value) {
+    public void setMakeOrder(boolean value) {
         super.isMakeOrder = value;
     }
 
-    void setTakeOrder(boolean value) {
+    public void setTakeOrder(boolean value) {
         super.isTakeOrder = value;
     }
 
-    Actor getActor() {
+    public Actor getActor() {
         return this;
     }
 }

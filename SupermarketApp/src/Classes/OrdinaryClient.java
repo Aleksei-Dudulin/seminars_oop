@@ -1,6 +1,8 @@
 package Classes;
 
-public class OrdinaryClient extends Actor{
+import Interfaces.iActorBehaviour;
+
+public class OrdinaryClient extends Actor implements iActorBehaviour {
     public OrdinaryClient(String name) {
         super(name);
     }
@@ -15,23 +17,23 @@ public class OrdinaryClient extends Actor{
         super.name = name;
     }
 
-    boolean isMakeOrder() {
+    public boolean isMakeOrder() {
         return super.isMakeOrder;
     }
 
-    boolean isTakeOrder() {
+    public boolean isTakeOrder() {
         return super.isTakeOrder;
     }
 
-    void setMakeOrder(boolean value) {
+    public void setMakeOrder(boolean value) {
         super.isMakeOrder = value;
     }
 
-    void setTakeOrder(boolean value) {
+    public void setTakeOrder(boolean value) {
         super.isTakeOrder = value;
     }
 
-    Actor getActor() {
+    public Actor getActor() {
         return this;
     }
 }
