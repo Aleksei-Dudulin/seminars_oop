@@ -8,4 +8,9 @@ public interface iActorBehaviour {
     public void setTakeOrder(boolean val);
     public void setMakeOrder(boolean val);
     public Actor getActor();
+
+    /**
+     * Абстрактный метод возврата товара (без реализации)
+     */
+    abstract public void returnOrder();
 }

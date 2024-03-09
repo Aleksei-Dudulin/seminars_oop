@@ -40,4 +40,8 @@ public class TaxInspector implements iActorBehaviour {
 //        return new OrdinaryClient("Налоговый инспектор");
         return new OrdinaryClient(this.getName());
     }
+
+    @Override
+    public void returnOrder() {
+    }
 }

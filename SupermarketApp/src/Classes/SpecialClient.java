@@ -39,4 +39,10 @@ public class SpecialClient extends Actor implements iActorBehaviour {
     public Actor getActor() {
         return this;
     }
+    /**
+     * Метод возврата товара особого клиента (реализация)
+     */
+    public void returnOrder() {
+        System.out.println(name + " особый клиент вернул товары");
+    }
 }

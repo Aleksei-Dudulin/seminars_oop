@@ -36,4 +36,11 @@ public class OrdinaryClient extends Actor implements iActorBehaviour {
     public Actor getActor() {
         return this;
     }
+
+    /**
+     * Метод возврата товара обычного клиента (реализация)
+     */
+    public void returnOrder() {
+        System.out.println(name + " клиент вернул товары");
+    }
 }
