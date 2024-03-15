@@ -1,6 +1,6 @@
-import Domain.Student;
-import Domain.StudentGroup;
-import Domain.StudentSteam;
+import Controllers.AccountController;
+import Domain.*;
+import Services.StudentService;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,14 +33,15 @@ public class App {
         students1.add(student12);
         students1.add(student2);
         students1.add(student6);
+        students1.add(student3);
+        students1.add(student8);
+        students1.add(student5);
+        students1.add(student4);
+        students1.add(student10);
 
         List<Student> students2 = new ArrayList<>();
         students2.add(student11);
-        students2.add(student3);
-        students2.add(student8);
-        students2.add(student5);
-        students2.add(student4);
-        students2.add(student10);
+
 
         List<Student> students3 = new ArrayList<>();
         students3.add(student1);
@@ -77,15 +78,42 @@ public class App {
         steam.addGroup(group2);
         steam.addGroup(group3);
 
-        System.out.println(steam);
+//        System.out.println(steam);
 
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+//        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         /**
          * Сортируем группы в потоке сначала по количеству студентов, потом по номеру группы
          */
         Collections.sort(steam.getGroups());
-        System.out.println(steam);
+//        System.out.println(steam);
 
+//        AccountController accountController = new AccountController(); // не нужен, потому что мы сделали AccountController staticом
+        AccountController.print(students1); // AccountController вместо accountController, следствие стр. 93
+
+        StudentService studentService = new StudentService();
+        for (Student stud : students1) { // переменной stud типа данных Student проходим по списку students1
+            studentService.create(stud.getName(), stud.getAge());
+//            System.out.println(stud);
+        }
+//        System.out.println("-------------------------------------------");
+
+//        studentService.print(studentService.getAll());
+        System.out.println("-------------------------------------------");
+        studentService.sortByFIO(); // сортируем по имени
+        AccountController.print(studentService.getAll());
+
+        Teacher teacher1 = new Teacher("Иван Алексеевич", 53, "Доцент");
+        Employee employee1 = new Employee("Олег", 36, "Слесарь");
+
+        /**
+         * Ранее классы Teacher, Employee и Student были наследниками одного класса Person, и чтобы зарплату нам платить
+         * только Teacher и Employee, мы добавляем безопасность по типам и создаем промежуточного наследника Worker класса Person,
+         * и уже после этого делаем Teacher и Employee наследниками класса Worker
+         */
+        AccountController.paySalary(teacher1, 145000);
+        AccountController.paySalary(employee1, 45000);
+//        AccountController.paySalary(student1, 5000);
     }
+
 }
