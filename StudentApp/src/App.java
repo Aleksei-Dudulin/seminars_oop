@@ -1,6 +1,8 @@
 import Controllers.AccountController;
 import Domain.*;
+import Services.EmployeeService;
 import Services.StudentService;
+import Services.TeacherService;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,8 +90,8 @@ public class App {
         Collections.sort(steam.getGroups());
 //        System.out.println(steam);
 
-//        AccountController accountController = new AccountController(); // не нужен, потому что мы сделали AccountController staticом
-        AccountController.print(students1); // AccountController вместо accountController, следствие стр. 93
+////        AccountController accountController = new AccountController(); // не нужен, потому что мы сделали AccountController staticом
+//        AccountController.print(students1); // AccountController вместо accountController, следствие стр. 93
 
         StudentService studentService = new StudentService();
         for (Student stud : students1) { // переменной stud типа данных Student проходим по списку students1
@@ -99,9 +101,9 @@ public class App {
 //        System.out.println("-------------------------------------------");
 
 //        studentService.print(studentService.getAll());
-        System.out.println("-------------------------------------------");
+//        System.out.println("-------------------------------------------");
         studentService.sortByFIO(); // сортируем по имени
-        AccountController.print(studentService.getAll());
+//        AccountController.print(studentService.getAll());
 
         Teacher teacher1 = new Teacher("Иван Алексеевич", 53, "Доцент");
         Employee employee1 = new Employee("Олег", 36, "Слесарь");
@@ -111,9 +113,74 @@ public class App {
          * только Teacher и Employee, мы добавляем безопасность по типам и создаем промежуточного наследника Worker класса Person,
          * и уже после этого делаем Teacher и Employee наследниками класса Worker
          */
-        AccountController.paySalary(teacher1, 145000);
-        AccountController.paySalary(employee1, 45000);
-//        AccountController.paySalary(student1, 5000);
+//        AccountController.paySalary(teacher1, 145000);
+//        AccountController.paySalary(employee1, 45000);
+////        AccountController.paySalary(student1, 5000);
+
+        /**
+         *  Домашнее задание после 4 семинара. Создаем объект класса TeacherService и добавляем в него учителей.
+         */
+        TeacherService teacherService = new TeacherService();
+        teacherService.create("Михаил Семёнович", 43);
+        teacherService.create("Ольга Анатольевна", 52);
+        teacherService.create("Ирина Леонидовна", 55);
+        teacherService.create("Елена Степановна", 49);
+        teacherService.create("Михаил Юрьевич", 54);
+
+        /**
+         * Выводим список учителей в консоль.
+         */
+        AccountController.print(teacherService.getAll());
+        System.out.println("----------------------------------------");
+
+        /**
+         * Сортируем по имени и выводим в консоль.
+         */
+        teacherService.sortByName();
+        AccountController.print(teacherService.getAll());
+
+        System.out.println("----------------------------------------");
+
+        /**
+         * Вызываем метод подсчета среднего возраста группы.
+         */
+        AccountController.averageAge(teacherService.getAll());
+        System.out.println("----------------------------------------");
+
+        /**
+         * Проверка на группе студентов.
+         */
+        AccountController.print(studentService.getAll());
+        AccountController.averageAge(studentService.getAll());
+        System.out.println("----------------------------------------");
+
+        /**
+         * Проверка на группе служащих.
+         */
+        EmployeeService employeeService = new EmployeeService();
+        employeeService.create("Михаил", 43);
+        employeeService.create("Ольга", 52);
+        employeeService.create("Ирина", 55);
+        employeeService.create("Елена", 49);
+        employeeService.create("Михаил", 54);
+
+        AccountController.print(employeeService.getAll());
+        AccountController.averageAge(employeeService.getAll());
+
+
+//        // Создаем список учителей обычным способом
+//        List<Teacher> teacherList = new ArrayList<>();
+//        teacherList.add(new Teacher("Римма", 55, "Высшая категория"));
+//        teacherList.add(new Teacher("Сергей", 50, "Вторая категория"));
+//        teacherList.add(new Teacher("Марианна", 58, "Первая категория"));
+//
+//        // Создаем список работников обычным способом
+//        List<Employee> employeeGroup1 = new ArrayList<>();
+//        employeeGroup1.add(new Employee("Матвей", 47, "Электрик"));
+//        employeeGroup1.add(new Employee("Виталий", 38, "Сантехник"));
+//        employeeGroup1.add(new Employee("Марина", 62, "Бухгалтер"));
+
+
     }
 
 }

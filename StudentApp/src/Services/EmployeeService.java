@@ -19,7 +19,7 @@ public class EmployeeService implements iPersonService<Employee> {
 
     @Override
     public void create(String name, int age) {
-        Employee employee = new Employee(name, age, "math");
+        Employee employee = new Employee(name, age, "Basic");
         count++;
         employees.add(employee);
     }
