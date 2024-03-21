@@ -1,10 +1,13 @@
 import Controller.ControllerClass;
+import Controller.ControllerClassEng;
 import Controller.Interfaces.iGetModel;
 import Controller.Interfaces.iGetView;
+import Controller.Interfaces.iGetViewEng;
 import Model.FileModelClass;
 import Model.ModelClass;
 import Model.Domain.Student;
 import View.ViewClass;
+import View.ViewClassEng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +41,18 @@ public class App {
 //        fmodel.saveAllStudentToFile(studentList); // закомментировали чтобы не перезаписывать файл каждый раз при запуске программы
 
 //        iGetModel model = new ModelClass(studentList); // вместо model у нас теперь fmodel (н-р, от стороннего разработчика)
-        iGetView view = new ViewClass();
+//        iGetView view = new ViewClass();
 
-        ControllerClass controller = new ControllerClass(fmodel, view);
-        controller.run();
+        /**
+         * Создаем экземпляр интерфейса iGetViewEng
+         */
+        iGetViewEng viewEng = new ViewClassEng();
+
+        /**
+         * Создаем экземпляр класса ControllerClassEng и передаем в него экземпляры интерфейсов iGetModel и iGetViewEng
+         */
+        ControllerClassEng controllerEng = new ControllerClassEng(fmodel, viewEng);
+        controllerEng.run();
 
     }
 }
