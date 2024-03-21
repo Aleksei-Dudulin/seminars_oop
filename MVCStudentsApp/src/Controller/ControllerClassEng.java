@@ -32,7 +32,7 @@ public class ControllerClassEng {
         if (testData(buffer)) {
             viewEng.printAllStudents(buffer);
         } else {
-            System.out.println("List of students is empty!");
+            System.out.println("Students list is empty!");
         }
 
     }
@@ -41,12 +41,12 @@ public class ControllerClassEng {
         Command com = Command.NONE;
         boolean getNewIteration = true;
         while (getNewIteration) {
-            String command = viewEng.prompt("Введите команду: ");
+            String command = viewEng.prompt("Input a command: ");
             com = Command.valueOf(command.toUpperCase());
             switch (com) {
                 case EXIT:
                     getNewIteration = false;
-                    System.out.println("Выход из программы!");
+                    System.out.println("Exit from program!");
                     break;
                 case LIST:
                     //MVC
