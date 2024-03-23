@@ -2,13 +2,18 @@ package Model.Domain;
 
 public class Student extends Person implements Comparable<Student> {
     private int id;
-    private static int generateId;
 
-    public Student(String name, int age) { // static поле сюда не добавляется, потому что конструктор понимает что мы хотим что-то с этим полем сделать
+    public Student(int id, String name, int age) {
         super(name, age);
-        this.id = generateId + 1;
-        generateId++;
+        this.id = id;
     }
+
+//    public Student(int id, String name, int age) { // static поле сюда не добавляется, потому что конструктор понимает что мы хотим что-то с этим полем сделать
+//        super(name, age);
+//        this.id = generateId + 1;
+//        generateId++;
+//    }
+
 
     public int getId() {
         return id;

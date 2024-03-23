@@ -4,21 +4,36 @@ import Controller.Interfaces.iGetView;
 import Model.Domain.Student;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
-public class ViewClass implements iGetView {
+public class ViewClassEng implements iGetView {
+
+    /**
+     * Реализация метода напечатать всех студентов
+     *
+     * @param students
+     */
     public void printAllStudents(List<Student> students) {
-        System.out.println("************ Список студентов **************");
+        System.out.println("************ List of students **************");
         for (Student s : students) {
             System.out.println(s);
         }
         System.out.println("********************************************");
     }
 
+
+    /**
+     * Реализация метода ввода строки с консоли
+     *
+     * @param msg
+     * @return
+     */
     @Override
     public String prompt(String msg) {
         Scanner in = new Scanner(System.in);
         System.out.println(msg);
         return in.nextLine();
     }
+
 }
